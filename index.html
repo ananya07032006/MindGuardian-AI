@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}MindGuardian AI — Your Mental Wellness Companion{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="hero-section text-white text-center py-6">
+  <div class="container py-5">
+    <div class="mx-auto" style="max-width:680px">
+      <div class="hero-badge mb-3">AI-Powered Mental Wellness</div>
+      <h1 class="display-5 fw-bold mb-3">
+        You Deserve to Feel <span class="text-warning">Better</span>
+      </h1>
+      <p class="lead mb-4 opacity-90">
+        MindGuardian AI listens, understands your emotions, tracks your mood,
+        and guides you toward daily wellness — privately and securely.
+      </p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="{{ url_for('auth.register') }}" class="btn btn-warning btn-lg px-4 fw-semibold">
+          <i data-feather="user-plus"></i> Get Started Free
+        </a>
+        <a href="{{ url_for('main.emergency') }}" class="btn btn-outline-light btn-lg px-4">
+          <i data-feather="phone"></i> Crisis Helplines
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-6 bg-light">
+  <div class="container py-5">
+    <h2 class="text-center fw-bold mb-2">Everything you need to protect your mind</h2>
+    <p class="text-center text-muted mb-5">Six powerful features. One compassionate assistant.</p>
+    <div class="row g-4">
+
+      {% set features = [
+        ("message-circle", "brand-blue",   "AI Chat Support",        "Talk freely about anything. MindGuardian listens without judgment and responds with empathy."),
+        ("cpu",            "brand-purple",  "Emotion Detection",      "Advanced NLP identifies your emotional state in real-time so responses are always relevant."),
+        ("alert-triangle", "brand-red",     "Crisis Risk Detection",  "Automatic suicide risk screening with instant links to professional crisis support."),
+        ("activity",       "brand-green",   "Mood Tracker",           "Log your daily mood, add journal notes, and watch your emotional patterns over time."),
+        ("sun",            "brand-yellow",  "Wellness Tips",          "Fresh, science-backed daily tips rotated every day to keep your mental health routine varied."),
+        ("phone",          "brand-orange",  "Emergency Helplines",    "One-tap access to verified crisis hotlines in the US, UK, Canada, Australia, India & more."),
+      ] %}
+
+      {% for icon, color, title, desc in features %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card feature-card h-100 border-0 shadow-sm">
+          <div class="card-body p-4">
+            <div class="feature-icon-wrap {{ color }} mb-3">
+              <i data-feather="{{ icon }}"></i>
+            </div>
+            <h5 class="fw-semibold mb-2">{{ title }}</h5>
+            <p class="text-muted mb-0 small">{{ desc }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="py-6">
+  <div class="container py-5">
+    <h2 class="text-center fw-bold mb-2">How it works</h2>
+    <p class="text-center text-muted mb-5">Start feeling supported in three simple steps.</p>
+    <div class="row g-4 justify-content-center">
+      {% for step, title, desc in [
+        ("1", "Create your account",   "Sign up in seconds — no credit card, no data sold."),
+        ("2", "Start a conversation",  "Chat with MindGuardian. Your emotions are detected automatically."),
+        ("3", "Track & grow",          "Log moods daily, review history, and follow personalised tips."),
+      ] %}
+      <div class="col-md-4 text-center">
+        <div class="step-number mx-auto mb-3">{{ step }}</div>
+        <h5 class="fw-semibold">{{ title }}</h5>
+        <p class="text-muted small">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5 bg-brand text-white text-center">
+  <div class="container">
+    <h3 class="fw-bold mb-2">Ready to start your wellness journey?</h3>
+    <p class="mb-4 opacity-90">Join thousands who are taking control of their mental health — one day at a time.</p>
+    <a href="{{ url_for('auth.register') }}" class="btn btn-warning btn-lg px-5 fw-semibold">
+      Create Free Account
+    </a>
+  </div>
+</section>
+
+{% endblock %}
